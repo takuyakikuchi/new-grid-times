@@ -52,13 +52,16 @@ const MainStoryGrid = () => {
 };
 
 const Wrapper = styled.div`
+  --spacing: 16px;
+  --section-divider: 1px solid var(--color-gray-300); 
+
   display: grid;
   grid-template-areas:
     'main-story'
     'secondary-stories'
     'opinion-stories'
     'advertisement';
-  gap: 48px;
+  gap: 48px 0;
   margin-bottom: 48px;
 
   @media ${QUERIES.tabletOnly} {
@@ -75,15 +78,30 @@ const Wrapper = styled.div`
     'main-story secondary-stories opinion-stories'
     'main-story secondary-stories opinion-stories'
     'main-story advertisement advertisement';
+    gap: var(--spacing);
   }
 `;
 
 const MainStorySection = styled.section`
   grid-area: main-story;
+
+  @media ${QUERIES.tabletAndUp} {
+    padding-right: var(--spacing);
+    border-right: var(--section-divider);
+  }
 `;
 
 const SecondaryStorySection = styled.section`
   grid-area: secondary-stories;
+
+  @media ${QUERIES.tabletOnly} {
+    padding-left: var(--spacing);
+  }
+
+  @media ${QUERIES.laptopAndUp} {
+    padding-right: var(--spacing);
+    border-right: var(--section-divider);
+  }
 `;
 
 const StoryList = styled.div`
@@ -93,9 +111,9 @@ const StoryList = styled.div`
 
 const Border = styled.div`
   width: 100%;
-  border-top: 1px solid var(--color-gray-300);
-  margin-top: 16px;
-  margin-bottom: 16px;
+  border-top: var(--section-divider);
+  margin-top: var(--spacing);
+  margin-bottom: var(--spacing);
 `;
 
 const OpinionSection = styled.section`
@@ -105,7 +123,7 @@ const OpinionSection = styled.section`
     ${StoryList} {
       display: flex;
       flex-direction: row;
-      gap: 16px;
+      gap: var(--spacing);
 
       > * {
         flex: 1;
@@ -120,6 +138,11 @@ const OpinionSection = styled.section`
 
 const AdvertisementSection = styled.section`
   grid-area: advertisement;
+
+  @media ${QUERIES.laptopAndUp} {
+    padding-top: var(--spacing);
+    border-top: 1px solid var(--color-gray-300);
+  }
 `;
 
 export default MainStoryGrid;

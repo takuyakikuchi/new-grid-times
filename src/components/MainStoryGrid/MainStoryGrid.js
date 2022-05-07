@@ -23,7 +23,10 @@ const MainStoryGrid = () => {
       <SecondaryStorySection>
         <StoryList>
           {SECONDARY_STORIES.map((story, index) => (
-            <SecondaryStory key={story.id} {...story} />
+            <>
+              { index > 0 && <Border />}
+              <SecondaryStory key={story.id} {...story} />
+            </>
           ))}
         </StoryList>
       </SecondaryStorySection>
@@ -66,6 +69,13 @@ const SecondaryStorySection = styled.section`
 const StoryList = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+const Border = styled.div`
+  width: 100%;
+  border-top: 1px solid var(--color-gray-300);
+  margin-top: 16px;
+  margin-bottom: 16px;
 `;
 
 const OpinionSection = styled.section`

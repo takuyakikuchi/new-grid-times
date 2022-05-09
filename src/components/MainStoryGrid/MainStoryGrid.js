@@ -73,7 +73,7 @@ const Wrapper = styled.div`
   }
 
   @media ${QUERIES.laptopAndUp} {
-    grid-template-columns: 42% 1fr 1fr;
+    grid-template-columns: 5fr 4fr 3fr;
     grid-template-areas:
     'main-story secondary-stories opinion-stories'
     'main-story secondary-stories opinion-stories'
@@ -133,6 +133,10 @@ const OpinionSection = styled.section`
     ${Border} {
       display: none;
     }
+  }
+
+  @media ${QUERIES.laptopAndUp} {
+    margin-top: -8px;
   }
 `;
 

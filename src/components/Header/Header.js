@@ -38,10 +38,10 @@ const Header = () => {
           </button>
         </DesktopActionGroup>
         <Logo />
-        <Subscribe>
+        <SubscribeWrapper>
           <Button>Subscribe</Button>
-          <a href='/'>Already a subscriber?</a>
-        </Subscribe>
+          <SubLink href='/'>Already a subscriber?</SubLink>
+        </SubscribeWrapper>
       </MainHeader>
     </header>
   );
@@ -82,8 +82,16 @@ const MainHeader = styled(MaxWidthWrapper)`
   margin-top: 32px;
   margin-bottom: 48px;
 
+  @media ${QUERIES.tabletOnly} {
+    margin-top: 48px;
+    margin-bottom: 72px;
+  }
+
   @media ${QUERIES.laptopAndUp} {
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    margin-top: 16px;
+    margin-bottom: 81px;
   }
 `;
 
@@ -100,22 +108,26 @@ const DesktopActionGroup = styled(ActionGroup)`
   }
 `;
 
-const Subscribe = styled.div`
+const SubscribeWrapper = styled.div`
   display: none;
 
-  a {
-    font-size: 14px;
-    color: var(--color-gray-900);
-    font-style: italic;
-    text-decoration: underline;
-  }
-
   @media ${QUERIES.laptopAndUp} {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    align-items: center;
+    justify-self: end;
+    position: relative;
+    display: revert;
   }
+`;
+
+const SubLink = styled.a`
+  position: absolute;
+  margin-top: 8px;
+  width: 100%;
+  text-align: center;
+
+  font-size: 0.875rem;
+  color: var(--color-gray-900);
+  font-style: italic;
+  text-decoration: underline;
 `;
 
 export default Header;
